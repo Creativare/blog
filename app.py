@@ -4,6 +4,7 @@ import feedparser
 import random
 import threading
 import time
+import os
 
 app = Flask(__name__)
 
@@ -87,6 +88,9 @@ def article(article_id):
     conn.close()
     return render_template('article.html', article=article)
 
-# --- Avvio diretto ---
+# --- Avvio server Flask su Render ---
 init_db()
 threading.Thread(target=schedule_fetch, daemon=True).start()
+
+port = int(os.environ.get('PORT', 5000))
+app.run(host='0.0.0.0', port=port)
