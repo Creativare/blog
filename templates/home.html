@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>NewsBot - Home</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>NewsBot - Ultime Notizie</h1>
+    {% for article in articles %}
+    <div class="article">
+        <h2><a href="/article/{{ article[0] }}">{{ article[1] }}</a></h2>
+        <img src="{{ article[4] }}" alt="Immagine Notizia">
+        <p>{{ article[2] }}</p>
+        <small>Categoria: <a href="/category/{{ article[5] }}">{{ article[5] }}</a></small>
+    </div>
+    {% endfor %}
+</body>
+</html>
